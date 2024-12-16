@@ -1,0 +1,29 @@
+name: Publish
+#On which Branch ?
+on:
+  push:
+    branches: [main]
+  pull_requests:
+    branches: [main]
+jobs:
+  #We want to publish the library on npm
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '23.x'
+      - run: npm install
+      - run: npm run build
+      - run: |
+          echo @amilbcahat:registry=https://npm.pkg.github.com/ > build/.npmrc
+          echo //npm.pkg.github.com/:_authToken=${NPM_TOKEN} >> build/.npmrc
+      - run: npm publish
+        #Specifications
+        working-directory: ./build
+        env:
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
