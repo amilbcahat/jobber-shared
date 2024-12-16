@@ -3,7 +3,7 @@ name: Publish
 on:
   push:
     branches: [main]
-  pull_requests:
+  pull_request:
     branches: [main]
 jobs:
   #We want to publish the library on npm
