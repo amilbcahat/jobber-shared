@@ -14,7 +14,15 @@ export {
   IAuthResponse,
   IAuthUser,
 } from './auth.interface';
-export { IErrorResponse, ErrnoException } from './error-handler';
+export {
+  CustomError,
+  BadRequestError,
+  NotFoundError,
+  NotAuthorizedError,
+  FileTooLargeError,
+  ServerError,
+  ErrnoException,
+} from './error-handler';
 export { IBuyerDocument, IReduxBuyer } from './buyer.interface';
 export {
   IConversationDocument,
