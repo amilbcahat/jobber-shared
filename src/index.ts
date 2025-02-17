@@ -22,6 +22,7 @@ export {
   FileTooLargeError,
   ServerError,
   ErrnoException,
+  IErrorResponse,
 } from './error-handler';
 export { IBuyerDocument, IReduxBuyer } from './buyer.interface';
 export {
